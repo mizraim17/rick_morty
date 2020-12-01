@@ -5,7 +5,7 @@ import "./Tarjeta.scss";
 
 const Tarjeta = ({ data }) => {
 	return (
-		<Col sm={12} lg={6} className="mb-3 ">
+		<Col sm={12} lg={6} className="mb-3 " >
 			<Card style={{ width: "18rem" }} className="tarjeta">
 			<Card.Title >  {data.name}</Card.Title>
 				
@@ -13,8 +13,8 @@ const Tarjeta = ({ data }) => {
 				<Card.Img variant="top" src={data.image} />
 				<Card.Body>
 					
-					<Card.Text>Genero: {data.gender}</Card.Text>
-					<Card.Text>Especie: {data.species}</Card.Text>
+					<Card.Text> <b>Genero:</b>  {data.gender}</Card.Text>
+					<Card.Text> <b>Especie:</b>  {data.species}</Card.Text>
 				</Card.Body>
 			</Card>
 		</Col>

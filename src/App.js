@@ -19,36 +19,30 @@ function App() {
 
 		let aleatorio = "";
 		for (let i = 1; i <= numberCharacter; i++) {
-			console.log("i", i);
-			i == numberCharacter
+		
+			i === (parseInt(numberCharacter)) 
 				? (aleatorio = aleatorio + Math.round(Math.random() * (1 - 671) + 671))
 				: (aleatorio =
 						aleatorio + Math.round(Math.random() * (1 - 671) + 671) + ",");
 
-			if (i == numberCharacter) {
-				console.log("____entro");
+			if (i === parseInt(numberCharacter))  {
 				axios
 					.get(`https://rickandmortyapi.com/api/character/${aleatorio}`)
 					.then((res) => {
 						setDataCharacter(res.data);
-						console.log("=>", res.data);
+						// console.log("=>", res.data);
 					});
 			}
 		}
-
-		console.log("ale", aleatorio);
 	};
 
 	const radioChanges = (e) => {
 		setNumberCharacter(e.target.value);
 		setError(null);
-		console.log("equis");
 	};
 
 	return (
-		<div className="App">
-			
-		
+		<div className="App">		
 			<Container>
 				<Row className="">
 					<Col sm={12}>
@@ -67,7 +61,7 @@ function App() {
 						<Form.Check
 							onChange={radioChanges}
 							type="radio"
-							label="5 personajes"
+							label="10 personajes"
 							name="formHorizontalRadios"
 							id="formHorizontalRadios1"
 							value="5"
@@ -75,7 +69,7 @@ function App() {
 						<Form.Check
 							onChange={radioChanges}
 							type="radio"
-							label="10 personajes"
+							label="15 personajes"
 							name="formHorizontalRadios"
 							id="formHorizontalRadios2"
 							value="10"
@@ -83,15 +77,13 @@ function App() {
 						<Form.Check
 							onChange={radioChanges}
 							type="radio"
-							label="15 personajes"
+							label="20 personajes"
 							name="formHorizontalRadios"
 							id="formHorizontalRadios3"
 							value="15"
 						/>
 					</Col>
-				</Row>
-
-				{console.log("errBut", errBut)}
+				</Row>			 
 
 				{errBut ? (
 					<Toast>
@@ -102,7 +94,7 @@ function App() {
 								alt=""
 							/>
 							<strong className="mr-auto">Ups</strong>
-							{/* <small>11 mins ago</small> */}
+							 
 						</Toast.Header>
 						<Toast.Body>No has elegido cuantos quieres</Toast.Body>
 					</Toast>
@@ -113,7 +105,7 @@ function App() {
 				<Row>
 					<Container>
 						<div className="my-5">
-							<Button onClick={randomCaracter}>Obten Personaje</Button>
+							<Button onClick={randomCaracter}>Obtén Personaje</Button>
 						</div>
 					</Container>
 				</Row>
@@ -121,7 +113,7 @@ function App() {
 				<Row>
 					{dataCharacter != null
 						? dataCharacter.map((el, i) => {
-								return <Tarjeta data={el} />;
+								return <Tarjeta data={el} key={i} />;
 						  })
 						: ""}
 				</Row>
