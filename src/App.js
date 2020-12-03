@@ -64,7 +64,7 @@ function App() {
 							label="10 personajes"
 							name="formHorizontalRadios"
 							id="formHorizontalRadios1"
-							value="5"
+							value="10"
 						/>
 						<Form.Check
 							onChange={radioChanges}
@@ -72,7 +72,7 @@ function App() {
 							label="15 personajes"
 							name="formHorizontalRadios"
 							id="formHorizontalRadios2"
-							value="10"
+							value="15"
 						/>
 						<Form.Check
 							onChange={radioChanges}
@@ -80,7 +80,7 @@ function App() {
 							label="20 personajes"
 							name="formHorizontalRadios"
 							id="formHorizontalRadios3"
-							value="15"
+							value="20"
 						/>
 					</Col>
 				</Row>			 
