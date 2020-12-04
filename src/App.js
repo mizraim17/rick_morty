@@ -12,6 +12,9 @@ function App() {
 	const [numberCharacter, setNumberCharacter] = useState(null);
 	const [errBut, setError] = useState(null);
 
+	console.log("--->",`${process.env.REACT_APP_API_URL} `)
+	console.log("--->",)
+
 	const randomCaracter = () => {
 		if (numberCharacter == null) {
 			setError(true);
@@ -27,7 +30,7 @@ function App() {
 
 			if (i === parseInt(numberCharacter))  {
 				axios
-					.get(`https://rickandmortyapi.com/api/character/${aleatorio}`)
+					.get(`${process.env.REACT_APP_API_URL}${aleatorio}`)
 					.then((res) => {
 						setDataCharacter(res.data);
 						// console.log("=>", res.data);
@@ -36,13 +39,16 @@ function App() {
 		}
 	};
 
-	const radioChanges = (e) => {
+	const selectChanges = (e) => {
+		console.log("entro",e.target.value)
 		setNumberCharacter(e.target.value);
 		setError(null);
 	};
 
 	return (
 		<div className="App">		
+			<h1>as ={process.env.REACT_APP_SECRET_NAME}</h1>
+			
 			<Container>
 				<Row className="">
 					<Col sm={12}>
@@ -58,30 +64,18 @@ function App() {
 						</Form.Label>
 					</Col>
 					<Col sm={6}>
-						<Form.Check
-							onChange={radioChanges}
-							type="radio"
-							label="10 personajes"
-							name="formHorizontalRadios"
-							id="formHorizontalRadios1"
-							value="10"
-						/>
-						<Form.Check
-							onChange={radioChanges}
-							type="radio"
-							label="15 personajes"
-							name="formHorizontalRadios"
-							id="formHorizontalRadios2"
-							value="15"
-						/>
-						<Form.Check
-							onChange={radioChanges}
-							type="radio"
-							label="20 personajes"
-							name="formHorizontalRadios"
-							id="formHorizontalRadios3"
-							value="20"
-						/>
+						<Form>
+							<Form.Group controlId="exampleForm.SelectCustom">
+								<Form.Label>Custom select</Form.Label>
+								<Form.Control as="select" custom  onChange={selectChanges}> 
+									<option value="0" custom="true">elige valor</option>
+									<option value="10">10</option>
+									<option value="15" onChange={selectChanges}>15</option>
+									<option value="20" onChange={selectChanges}>20</option>
+									<option value="25" onChange={selectChanges}>25	</option>									
+								</Form.Control>
+							</Form.Group>
+						</Form>
 					</Col>
 				</Row>			 
 
